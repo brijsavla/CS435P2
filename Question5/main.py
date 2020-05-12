@@ -16,8 +16,8 @@ def minDist(distances, visited):
   m = math.inf
   for current in distances.keys():
     if current not in visited and distances[current] <= m:
-      m = distances[curr]
-      ans = curr
+      m = distances[current]
+      ans = current
   return ans
 
 def dijkstras(start):
@@ -34,7 +34,7 @@ def dijkstras(start):
     # Iterate over its neighbors, “relax” each neighbor:
     for neighbor in current.neighbors:
       # For each neighbor that is not finalized, update its distance (if less than its current distance) to the sum of curr’s distance and the weight of the edge between curr and this neighbor.
-      if neighbor[0] not in distances or distances[neighbor[0]] > distance[current] + neighbor[1]:
+      if neighbor[0] not in distances or distances[neighbor[0]] > distances[current] + neighbor[1]:
         distances[neighbor[0]] = distances[current] + neighbor[1]
     # Set curr to the next min distance node – the node with the smallest distance that is not yet finalized.
     current = minDist(distances, visited)
